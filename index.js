@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require('cors');
 const { resolve } = require('path');
 
 const app = express();
@@ -9,7 +10,7 @@ const DISCOUNT_PERCENTAGE = 10;
 const LOYALTY_RATE = 2;
 
 app.use(express.static('static'));
-
+app.use(cors())
 app.get('/cart-total', (req, res) => {
   let newItemPrice = parseFloat(req.query.newItemPrice ?? 0);
   let cartTotal = parseFloat(req.query.cartTotal ?? 0);
